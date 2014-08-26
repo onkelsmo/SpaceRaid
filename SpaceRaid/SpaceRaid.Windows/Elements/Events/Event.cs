@@ -12,5 +12,10 @@ namespace SpaceRaid.Elements.Events
         {
                         
         }
+
+        public virtual void influenceRaider(Raider raider)
+        {
+
+        }
     }
 }

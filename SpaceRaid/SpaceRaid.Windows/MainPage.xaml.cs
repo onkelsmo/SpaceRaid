@@ -134,6 +134,9 @@ namespace SpaceRaid
             Grid grid = sender as Grid;
             this.raider.setPosition(grid);
 
+            // set raider hp
+            tblHp.Text = this.raider.getHp().ToString();
+
             // set tiles counter
             tblTiles.Text = this.raider.getTiles().ToString();
 

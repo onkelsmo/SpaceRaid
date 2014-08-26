@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceRaid.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,18 @@ namespace SpaceRaid.Elements.Events
     {
         public Negativ()
         {
+            
+        }
 
+        public override void influenceRaider(SpaceRaid.Elements.Raider raider)
+        {
+            Logger.log("Negative Event triggert \n");
+            if (raider.getHp() >= 0)
+            {
+                raider.setHp(raider.getHp() - 1);
+                Logger.log("Raider HP -1\n");
+            }
+            
         }
     }
 }

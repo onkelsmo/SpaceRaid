@@ -104,7 +104,7 @@ namespace SpaceRaid.Elements
         {
             // TODO: handle the tile
             Event ev = this.eventFactory.getEvent();
-            Logger.log(ev.ToString() + "\n");
+            ev.influenceRaider(this);
         }
 
         private void display(Grid tileGrid)
