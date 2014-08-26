@@ -17,12 +17,15 @@ namespace SpaceRaid.Elements.Events
         public override void influenceRaider(SpaceRaid.Elements.Raider raider)
         {
             Logger.log("Negative Event triggert \n");
-            if (raider.getHp() >= 0)
+            if (raider.getHp() > 0)
             {
                 raider.setHp(raider.getHp() - 1);
                 Logger.log("Raider HP -1\n");
             }
-            
+            else
+            {
+                Logger.log("Raider destroyed!");
+            }
         }
     }
 }
