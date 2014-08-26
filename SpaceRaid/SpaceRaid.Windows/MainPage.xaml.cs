@@ -116,8 +116,7 @@ namespace SpaceRaid
         private void generatePlayField()
         {
             // setup the Raider
-            this.raider = new Raider();
-            this.raider.display(tileGrid41);
+            this.raider = new Raider(tileGrid41);
 
             // setup the information Panel
             tblRaider.Text = this.raider.ToString();
@@ -130,18 +129,17 @@ namespace SpaceRaid
         {
             Grid lastTile = playFieldGrid.FindName(this.raider.getPosition()) as Grid;
             lastTile.Background = new SolidColorBrush(Colors.Black);
-         
+
             // move raider   
             Grid grid = sender as Grid;
-            this.raider.setPosition(grid.Name);
-            // TODO: display has to wait if move is allowed or not
-            this.raider.display(grid);
+            this.raider.setPosition(grid);
 
             // set tiles counter
             this.tiles++;
             tblTiles.Text = tiles.ToString();
 
             // log the move
+            // TODO: überarbeiten position und funktion
             string curentText = tbOutput.Text;
             tbOutput.Text = "Raider moved to " + grid.Name + "\n" + curentText;
         }

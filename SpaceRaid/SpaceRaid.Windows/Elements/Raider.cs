@@ -18,6 +18,7 @@ namespace SpaceRaid.Elements
         private int[] coords;
         private int range;
         private Grid lastTile;
+        private Grid startTile;
 
         public int getHp()
         {
@@ -31,14 +32,22 @@ namespace SpaceRaid.Elements
         {
             return this.position;
         }
-        public void setPosition(string value)
+        public void setPosition(Grid value)
         {
-            if (this.isMoveAllowed(value))
+            string tileName = value.Name;
+            if (this.isMoveAllowed(tileName))
             {
-                this.position = value;
-                this.setCoords(value);
+                this.position = tileName;
+                this.setCoords(tileName);
+                this.lastTile = value;
+                this.display(value);
             }
-            // TODO: else?
+            else
+            {
+                this.position = this.lastTile.Name;
+                this.setCoords(this.lastTile.Name);
+                this.display(this.lastTile);
+            }
         }
         public int getRange()
         {
@@ -53,18 +62,19 @@ namespace SpaceRaid.Elements
             this.coords = new int[] { Convert.ToInt32(value.Substring(8, 1)), Convert.ToInt32(value.Substring(9, 1)) };
         }
 
-        public Raider()
+        public Raider(Grid startTile)
         {
             this.hitPoints = 5;
-            this.position = "tileGrid41";
-            this.setCoords(this.position);
             this.range = 1;
+            this.startTile = startTile;
+            this.lastTile = startTile;
+            this.setCoords(startTile.Name);
+            this.setPosition(startTile);
+            
         }
 
-        public void display(Grid tileGrid)
+        private void display(Grid tileGrid)
         {
-            this.lastTile = tileGrid;
-
             tileGrid.Background = new SolidColorBrush(Colors.Tomato);
         }
         
