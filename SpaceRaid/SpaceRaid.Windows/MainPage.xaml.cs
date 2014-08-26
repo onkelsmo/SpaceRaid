@@ -121,10 +121,12 @@ namespace SpaceRaid
             tblHp.Text = this.raider.getHp().ToString();
             tblTiles.Text = this.raider.getTiles().ToString();
             tblScore.Text = score.ToString();
+            tbOutput.Text = Logger.getText() + "\n";
         }
 
         private void tileGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            // set color of last tile
             Grid lastTile = playFieldGrid.FindName(this.raider.getPosition()) as Grid;
             lastTile.Background = new SolidColorBrush(Colors.Black);
 
@@ -135,8 +137,10 @@ namespace SpaceRaid
             // set tiles counter
             tblTiles.Text = this.raider.getTiles().ToString();
 
+            // set score
+            tblScore.Text = this.raider.getScore().ToString();
+
             // log the move
-            string currentText = tbOutput.Text;
             tbOutput.Text = Logger.getText() + "\n";
         }
     }

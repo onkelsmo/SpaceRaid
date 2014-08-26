@@ -22,6 +22,7 @@ namespace SpaceRaid.Elements
         private Grid startTile;
         private string tileName;
         private int tiles;
+        private int score;
 
         public int getHp()
         {
@@ -35,27 +36,9 @@ namespace SpaceRaid.Elements
         {
             return this.tiles;
         }
-        public string getPosition()
+        public int getScore()
         {
-            return this.position;
-        }
-        public void setPosition(Grid value)
-        {
-            this.tileName = value.Name;
-            if (this.isMoveAllowed(this.tileName))
-            {
-                this.position = this.tileName;
-                this.setCoords(this.tileName);
-                this.lastTile = value;
-                this.tiles++;
-                this.display(value);
-            }
-            else
-            {
-                this.position = this.lastTile.Name;
-                this.setCoords(this.lastTile.Name);
-                this.display(this.lastTile);
-            }
+            return this.score;
         }
         public int getRange()
         {
@@ -69,7 +52,37 @@ namespace SpaceRaid.Elements
         {
             this.coords = new int[] { Convert.ToInt32(value.Substring(8, 1)), Convert.ToInt32(value.Substring(9, 1)) };
         }
+        public string getPosition()
+        {
+            return this.position;
+        }
+        public void setPosition(Grid value)
+        {
+            this.tileName = value.Name;
+            if (this.isMoveAllowed(this.tileName))
+            {
+                SolidColorBrush transparenBackground = new SolidColorBrush(Colors.Transparent);
+                SolidColorBrush currentBackground = value.Background as SolidColorBrush;
+                if (currentBackground.Color == transparenBackground.Color)
+                {
+                    value.Background = new SolidColorBrush(Colors.Black);
+                    this.score++;
+                }
 
+                this.position = this.tileName;
+                this.setCoords(this.tileName);
+                this.lastTile = value;
+                this.tiles++;
+                this.display(value);
+            }
+            else
+            {
+                this.position = this.lastTile.Name;
+                this.setCoords(this.lastTile.Name);
+                this.display(this.lastTile);
+            }
+        }
+        
         public Raider(Grid startTile)
         {
             this.hitPoints = 5;
@@ -115,7 +128,7 @@ namespace SpaceRaid.Elements
             else if (tileNumber[0] == this.coords[0] &&
                 tileNumber[1] == this.coords[1])
             {
-                //Logger.log("You are on this tile right now");
+                Logger.log("You are on " + this.tileName + "\n");
                 return false;
             }
             Logger.log("Move to " + this.tileName + " is not allowed!\n");
