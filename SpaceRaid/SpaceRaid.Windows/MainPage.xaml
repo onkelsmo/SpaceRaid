@@ -1,0 +1,175 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="SpaceRaid.MainPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpaceRaid"
+    xmlns:common="using:SpaceRaid.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">Space Raid</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+        </Grid>
+        <Grid x:Name="contentGrid" Grid.Row="1">
+            <Grid x:Name="playFieldGrid" HorizontalAlignment="Left" Height="550" Margin="50,50,0,0" VerticalAlignment="Top" Width="550">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                </Grid.RowDefinitions>
+                <!-- first row-->
+                <Border BorderThickness="1" BorderBrush="White">
+                    <Grid x:Name="tileGrid00" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="0" Grid.Column="1">
+                    <Grid x:Name="tileGrid01" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="0" Grid.Column="2">
+                    <Grid x:Name="tileGrid02" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="0" Grid.Column="3">
+                    <Grid x:Name="tileGrid03" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="0" Grid.Column="4">
+                    <Grid x:Name="tileGrid04" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <!-- second row -->
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="0">
+                    <Grid x:Name="tileGrid10" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="1">
+                    <Grid x:Name="tileGrid11" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="2">
+                    <Grid x:Name="tileGrid12" Tapped="tileGrid_Tapped" Background="Transparent">
+
+                    </Grid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="3">
+                    <Grid x:Name="tileGrid13" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="4">
+                    <Grid x:Name="tileGrid14" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <!-- third row -->
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="2" Grid.Column="0">
+                    <Grid x:Name="tileGrid20" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="2" Grid.Column="1">
+                    <Grid x:Name="tileGrid21" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="2" Grid.Column="2">
+                    <Grid x:Name="tileGrid22" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="2" Grid.Column="3">
+                    <Grid x:Name="tileGrid23" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="2" Grid.Column="4">
+                    <Grid x:Name="tileGrid24" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <!-- fourth row -->
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="3" Grid.Column="0">
+                    <Grid x:Name="tileGrid30" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="3" Grid.Column="1">
+                    <Grid x:Name="tileGrid31" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="3" Grid.Column="2">
+                    <Grid x:Name="tileGrid32" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="3" Grid.Column="3">
+                    <Grid x:Name="tileGrid33" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="3" Grid.Column="4">
+                    <Grid x:Name="tileGrid34" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <!-- fifth row -->
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="4" Grid.Column="0">
+                    <Grid x:Name="tileGrid40" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="4" Grid.Column="1">
+                    <Grid x:Name="tileGrid41" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="4" Grid.Column="2">
+                    <Grid x:Name="tileGrid42" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="4" Grid.Column="3">
+                    <Grid x:Name="tileGrid43" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="White" Grid.Row="4" Grid.Column="4">
+                    <Grid x:Name="tileGrid44" Tapped="tileGrid_Tapped" Background="Transparent"/>
+                </Border>
+            </Grid>
+            <StackPanel HorizontalAlignment="Left" Height="550" Margin="662,50,0,0" VerticalAlignment="Top" Width="400">
+                <TextBlock TextWrapping="Wrap" Text="Raider: " FontSize="20"/>
+                <TextBlock Name="tblRaider" TextWrapping="Wrap" LineHeight="50" FontSize="25"/>
+                <TextBlock TextWrapping="Wrap" Text="HP: " FontSize="20"/>
+                <TextBlock Name="tblHp" TextWrapping="Wrap" LineHeight="50" FontSize="25"/>
+                <TextBlock TextWrapping="Wrap" Text="Tiles: " FontSize="20"/>
+                <TextBlock Name="tblTiles" TextWrapping="Wrap" LineHeight="50" FontSize="25"/>
+                <TextBlock TextWrapping="Wrap" Text="Score: " FontSize="20"/>
+                <TextBlock Name="tblScore" TextWrapping="Wrap" FontSize="25" LineHeight="50"/>
+                <TextBox Name="tbOutput" TextWrapping="Wrap" Text="" Height="256" IsReadOnly="True"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
