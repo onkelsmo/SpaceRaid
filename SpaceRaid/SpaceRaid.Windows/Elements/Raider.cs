@@ -1,4 +1,5 @@
 ﻿using SpaceRaid.Common;
+using SpaceRaid.Elements.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace SpaceRaid.Elements
         private string tileName;
         private int tiles;
         private int score;
+        private EventFactory eventFactory;
 
         public int getHp()
         {
@@ -61,11 +63,12 @@ namespace SpaceRaid.Elements
             this.tileName = value.Name;
             if (this.isMoveAllowed(this.tileName))
             {
-                SolidColorBrush transparenBackground = new SolidColorBrush(Colors.Transparent);
                 SolidColorBrush currentBackground = value.Background as SolidColorBrush;
-                if (currentBackground.Color == transparenBackground.Color)
+                if (currentBackground.Color == new SolidColorBrush(Colors.Transparent).Color)
                 {
                     value.Background = new SolidColorBrush(Colors.Black);
+                    // TODO: check whats on the new tile
+                    this.checkTile(value);
                     this.score++;
                 }
 
@@ -93,6 +96,15 @@ namespace SpaceRaid.Elements
             this.setCoords(startTile.Name);
             this.setPosition(startTile);
             this.display(startTile);
+
+            this.eventFactory = new EventFactory();
+        }
+
+        private void checkTile(Grid tile)
+        {
+            // TODO: handle the tile
+            Event ev = this.eventFactory.getEvent();
+            Logger.log(ev.ToString() + "\n");
         }
 
         private void display(Grid tileGrid)

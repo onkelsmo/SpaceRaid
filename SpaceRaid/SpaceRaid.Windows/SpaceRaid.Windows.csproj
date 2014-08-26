@@ -115,6 +115,11 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Elements\EventFactory.cs" />
+    <Compile Include="Elements\Events\Empty.cs" />
+    <Compile Include="Elements\Events\Event.cs" />
+    <Compile Include="Elements\Events\Negativ.cs" />
+    <Compile Include="Elements\Events\Positiv.cs" />
     <Compile Include="Elements\Raider.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
