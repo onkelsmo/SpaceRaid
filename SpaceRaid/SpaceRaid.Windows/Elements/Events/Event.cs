@@ -17,5 +17,13 @@ namespace SpaceRaid.Elements.Events
         {
 
         }
+
+        public override string ToString()
+        {
+            //return base.ToString();
+            string value = base.ToString();
+
+            //value = value.Substring()
+        }
     }
 }

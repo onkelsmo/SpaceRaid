@@ -20,7 +20,7 @@ namespace SpaceRaid.Elements.Events
             if(raider.getHp() < 5)
             {
                 raider.setHp(raider.getHp() + 1);
-                Logger.log("Raider HP +1");
+                Logger.log("Raider HP +1\n");
             }
         }
     }

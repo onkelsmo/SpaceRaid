@@ -91,7 +91,7 @@
                 <!-- second row -->
                 <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="0">
                     <Grid x:Name="tileGrid10" Tapped="tileGrid_Tapped" Background="Transparent">
-
+                        
                     </Grid>
                 </Border>
                 <Border BorderThickness="1" BorderBrush="White" Grid.Row="1" Grid.Column="1">

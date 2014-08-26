@@ -102,9 +102,15 @@ namespace SpaceRaid.Elements
 
         private void checkTile(Grid tile)
         {
-            // TODO: handle the tile
             Event ev = this.eventFactory.getEvent();
             ev.influenceRaider(this);
+
+            // mark the tile
+            TextBlock temp = new TextBlock();
+            temp.HorizontalAlignment = HorizontalAlignment.Center;
+            temp.VerticalAlignment = VerticalAlignment.Center;
+            temp.Text = ev.ToString();
+            tile.Children.Add(temp);
         }
 
         private void display(Grid tileGrid)
