@@ -91,10 +91,22 @@ namespace SpaceRaid.Elements
         {
             int[] tileNumber = new int[] { Convert.ToInt32(value.Substring(8, 1)), Convert.ToInt32(value.Substring(9, 1)) };
 
-            if (tileNumber[0] == this.coords[0] + this.range ||
-                tileNumber[0] == this.coords[0] - this.range ||
+            if (tileNumber[0] == this.coords[0] - this.range &&
+                tileNumber[1] == this.coords[1] - this.range ||
+                tileNumber[0] == this.coords[0] - this.range &&
+                tileNumber[1] == this.coords[1] ||
+                tileNumber[0] == this.coords[0] - this.range &&
                 tileNumber[1] == this.coords[1] + this.range ||
-                tileNumber[1] == this.coords[1] - this.range)
+                tileNumber[0] == this.coords[0] &&
+                tileNumber[1] == this.coords[1] - this.range ||
+                tileNumber[0] == this.coords[0] &&
+                tileNumber[1] == this.coords[1] + this.range ||
+                tileNumber[0] == this.coords[0] + this.range &&
+                tileNumber[1] == this.coords[1] - this.range ||
+                tileNumber[0] == this.coords[0] + this.range &&
+                tileNumber[1] == this.coords[1] ||
+                tileNumber[0] == this.coords[0] + this.range &&
+                tileNumber[1] == this.coords[1] + this.range)
             {
                 Logger.log("Raider moved to " + this.tileName + "\n");
                 return true;
