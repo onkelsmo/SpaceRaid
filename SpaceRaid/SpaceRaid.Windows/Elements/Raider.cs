@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceRaid.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace SpaceRaid.Elements
         private int range;
         private Grid lastTile;
         private Grid startTile;
+        private string tileName;
+        private int tiles;
 
         public int getHp()
         {
@@ -28,18 +31,23 @@ namespace SpaceRaid.Elements
         {
             this.hitPoints = value;
         }
+        public int getTiles()
+        {
+            return this.tiles;
+        }
         public string getPosition()
         {
             return this.position;
         }
         public void setPosition(Grid value)
         {
-            string tileName = value.Name;
-            if (this.isMoveAllowed(tileName))
+            this.tileName = value.Name;
+            if (this.isMoveAllowed(this.tileName))
             {
-                this.position = tileName;
-                this.setCoords(tileName);
+                this.position = this.tileName;
+                this.setCoords(this.tileName);
                 this.lastTile = value;
+                this.tiles++;
                 this.display(value);
             }
             else
@@ -66,11 +74,12 @@ namespace SpaceRaid.Elements
         {
             this.hitPoints = 5;
             this.range = 1;
+            this.tiles = 0;
             this.startTile = startTile;
             this.lastTile = startTile;
             this.setCoords(startTile.Name);
             this.setPosition(startTile);
-            
+            this.display(startTile);
         }
 
         private void display(Grid tileGrid)
@@ -82,13 +91,21 @@ namespace SpaceRaid.Elements
         {
             int[] tileNumber = new int[] { Convert.ToInt32(value.Substring(8, 1)), Convert.ToInt32(value.Substring(9, 1)) };
 
-            if (tileNumber[0] == this.coords[0]+1 ||
-                tileNumber[0] == this.coords[0]-1 ||
-                tileNumber[1] == this.coords[1]+1 ||
-                tileNumber[1] == this.coords[1]-1)
+            if (tileNumber[0] == this.coords[0] + this.range ||
+                tileNumber[0] == this.coords[0] - this.range ||
+                tileNumber[1] == this.coords[1] + this.range ||
+                tileNumber[1] == this.coords[1] - this.range)
             {
+                Logger.log("Raider moved to " + this.tileName + "\n");
                 return true;
             }
+            else if (tileNumber[0] == this.coords[0] &&
+                tileNumber[1] == this.coords[1])
+            {
+                //Logger.log("You are on this tile right now");
+                return false;
+            }
+            Logger.log("Move to " + this.tileName + " is not allowed!\n");
             return false;
         }
     }

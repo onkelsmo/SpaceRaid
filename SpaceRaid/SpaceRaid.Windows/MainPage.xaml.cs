@@ -29,7 +29,6 @@ namespace SpaceRaid
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private Raider raider;
-        private int tiles;
         private int score;
         
         /// <summary>
@@ -57,7 +56,6 @@ namespace SpaceRaid
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
 
-            this.tiles = 0;
             this.score = 0;
 
             this.generatePlayField();
@@ -121,7 +119,7 @@ namespace SpaceRaid
             // setup the information Panel
             tblRaider.Text = this.raider.ToString();
             tblHp.Text = this.raider.getHp().ToString();
-            tblTiles.Text = tiles.ToString();
+            tblTiles.Text = this.raider.getTiles().ToString();
             tblScore.Text = score.ToString();
         }
 
@@ -135,13 +133,11 @@ namespace SpaceRaid
             this.raider.setPosition(grid);
 
             // set tiles counter
-            this.tiles++;
-            tblTiles.Text = tiles.ToString();
+            tblTiles.Text = this.raider.getTiles().ToString();
 
             // log the move
-            // TODO: überarbeiten position und funktion
-            string curentText = tbOutput.Text;
-            tbOutput.Text = "Raider moved to " + grid.Name + "\n" + curentText;
+            string currentText = tbOutput.Text;
+            tbOutput.Text = Logger.getText() + "\n";
         }
     }
 }
