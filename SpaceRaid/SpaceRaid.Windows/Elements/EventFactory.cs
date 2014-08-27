@@ -9,19 +9,40 @@ namespace SpaceRaid.Elements
 {
     class EventFactory
     {
+        private Event[] allowedEvents;
         private Event[] eventArray;
+        private int eventCounter;
+        private int maxEvents;
 
-        public EventFactory()
+        public EventFactory(int size)
         {
-            this.eventArray = new Event[] { new Positiv(), new Negativ(), new Empty() };
+            this.maxEvents = size;
+            this.allowedEvents = new Event[] { new Positiv(), new Negativ(), new Empty() };
+            this.eventArray = new Event[size];
+            this.fillEventArray();
+        }
+
+        private void fillEventArray()
+        {
+
+            Random rnd = new Random();
+            for (int i = 0; i < this.maxEvents; i++)
+            {
+                int r = rnd.Next(this.allowedEvents.Length);
+                this.eventArray[i] = this.allowedEvents[r];
+            }
+            this.eventArray[this.maxEvents - 1] = new Escape();
+
+            // shuffle the array
+            //Random rand = new Random();
+            //this.eventArray = this.eventArray.OrderBy(x => rand.Next()).ToArray();
         }
 
         public Event getEvent()
         {
-            Random rnd = new Random();
-            int r = rnd.Next(this.eventArray.Length);
-
-            return this.eventArray[r];
+            int counter = this.eventCounter;
+            this.eventCounter++;
+            return this.eventArray[counter];
         }
     }
 }

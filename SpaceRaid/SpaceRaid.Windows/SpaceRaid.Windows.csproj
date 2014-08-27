@@ -117,6 +117,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Elements\EventFactory.cs" />
     <Compile Include="Elements\Events\Empty.cs" />
+    <Compile Include="Elements\Events\Escape.cs" />
     <Compile Include="Elements\Events\Event.cs" />
     <Compile Include="Elements\Events\Negativ.cs" />
     <Compile Include="Elements\Events\Positiv.cs" />

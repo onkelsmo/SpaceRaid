@@ -98,7 +98,8 @@ namespace SpaceRaid.Elements
             this.setPosition(startTile);
             this.display(startTile);
 
-            this.eventFactory = new EventFactory();
+            // ToDo: this is not the raiders task
+            this.eventFactory = new EventFactory(24);
         }
 
         private void checkTile(Grid tile)
