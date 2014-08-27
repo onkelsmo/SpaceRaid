@@ -61,13 +61,14 @@ namespace SpaceRaid.Elements
         public void setPosition(Grid value)
         {
             this.tileName = value.Name;
+            // is move allowed?
             if (this.isMoveAllowed(this.tileName))
             {
                 SolidColorBrush currentBackground = value.Background as SolidColorBrush;
+                // is it a unexplored tile?
                 if (currentBackground.Color == new SolidColorBrush(Colors.Transparent).Color)
                 {
                     value.Background = new SolidColorBrush(Colors.Black);
-                    // TODO: check whats on the new tile
                     this.checkTile(value);
                     this.score++;
                 }
@@ -102,6 +103,7 @@ namespace SpaceRaid.Elements
 
         private void checkTile(Grid tile)
         {
+            // get a event from the factory and influence the raider (this)
             Event ev = this.eventFactory.getEvent();
             ev.influenceRaider(this);
 

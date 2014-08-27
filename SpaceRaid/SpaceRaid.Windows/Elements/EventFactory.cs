@@ -13,13 +13,13 @@ namespace SpaceRaid.Elements
 
         public EventFactory()
         {
-            eventArray = new Event[] { new Positiv(), new Negativ(), new Empty() };
+            this.eventArray = new Event[] { new Positiv(), new Negativ(), new Empty() };
         }
 
         public Event getEvent()
         {
             Random rnd = new Random();
-            int r = rnd.Next(eventArray.Length);
+            int r = rnd.Next(this.eventArray.Length);
 
             return this.eventArray[r];
         }
