@@ -20,11 +20,10 @@ namespace SpaceRaid.Elements.Events
 
         public override string ToString()
         {
-            // TODO: modifie return value
+            string value = base.ToString();
+            value = value.Substring(26);
 
-            return base.ToString();
-            //string value = base.ToString();
-            //value = value.Substring()
+            return value;
         }
     }
 }
