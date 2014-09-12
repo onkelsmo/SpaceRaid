@@ -13,6 +13,10 @@ using Windows.UI.Xaml.Media;
 
 namespace SpaceRaid.Elements
 {
+    /// <summary>
+    /// Raider
+    /// represents the player on the playfield.
+    /// </summary>
     class Raider
     {
         private int hitPoints;
@@ -65,7 +69,7 @@ namespace SpaceRaid.Elements
             if (this.isMoveAllowed(this.tileName))
             {
                 SolidColorBrush currentBackground = value.Background as SolidColorBrush;
-                // is it a unexplored tile?
+                // is it an unexplored tile?
                 if (currentBackground.Color == new SolidColorBrush(Colors.Transparent).Color)
                 {
                     value.Background = new SolidColorBrush(Colors.Black);
@@ -102,6 +106,10 @@ namespace SpaceRaid.Elements
             this.eventFactory = new EventFactory(24);
         }
 
+        /// <summary>
+        /// checkTile - check what is on the Tile
+        /// </summary>
+        /// <param name="tile">The Grid element</param>
         private void checkTile(Grid tile)
         {
             // get an event from the factory and influence the raider (this)
@@ -116,11 +124,20 @@ namespace SpaceRaid.Elements
             tile.Children.Add(temp);
         }
 
+        /// <summary>
+        /// display - set the background color of the given tile
+        /// </summary>
+        /// <param name="tileGrid">The Grid element</param>
         private void display(Grid tileGrid)
         {
             tileGrid.Background = new SolidColorBrush(Colors.Tomato);
         }
         
+        /// <summary>
+        /// isMoveAllowed - check if the clicked tile is one filed in all directions away
+        /// </summary>
+        /// <param name="value">The tilename as string</param>
+        /// <returns>bool</returns>
         private bool isMoveAllowed(string value)
         {
             int[] tileNumber = new int[] { Convert.ToInt32(value.Substring(8, 1)), Convert.ToInt32(value.Substring(9, 1)) };
