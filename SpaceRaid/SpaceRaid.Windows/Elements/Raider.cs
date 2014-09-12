@@ -91,7 +91,7 @@ namespace SpaceRaid.Elements
             }
         }
         
-        public Raider(Grid startTile)
+        public Raider(Grid startTile, EventFactory eventFactory)
         {
             this.hitPoints = 5;
             this.range = 1;
@@ -101,9 +101,7 @@ namespace SpaceRaid.Elements
             this.setCoords(startTile.Name);
             this.setPosition(startTile);
             this.display(startTile);
-
-            // ToDo: this is not the raiders task
-            this.eventFactory = new EventFactory(24);
+            this.eventFactory = eventFactory;
         }
 
         /// <summary>

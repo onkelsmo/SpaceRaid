@@ -30,6 +30,7 @@ namespace SpaceRaid
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private Raider raider;
         private int score;
+        private EventFactory eventFactory;
         
         /// <summary>
         /// Dies kann in ein stark typisiertes Anzeigemodell geändert werden.
@@ -115,8 +116,11 @@ namespace SpaceRaid
         /// </summary>
         private void generatePlayField()
         {
+            // setup the EventFactory
+            // TODO: Number of events has to be dynamic
+            this.eventFactory = new EventFactory(24);
             // setup the Raider
-            this.raider = new Raider(tileGrid41);
+            this.raider = new Raider(tileGrid41, this.eventFactory);
 
             // setup the information Panel
             tblRaider.Text = this.raider.ToString();
