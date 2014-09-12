@@ -104,7 +104,7 @@ namespace SpaceRaid.Elements
 
         private void checkTile(Grid tile)
         {
-            // get a event from the factory and influence the raider (this)
+            // get an event from the factory and influence the raider (this)
             Event ev = this.eventFactory.getEvent();
             ev.influenceRaider(this);
 

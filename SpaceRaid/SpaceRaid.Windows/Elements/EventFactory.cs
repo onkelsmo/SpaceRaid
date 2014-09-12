@@ -24,18 +24,16 @@ namespace SpaceRaid.Elements
 
         private void fillEventArray()
         {
-
             Random rnd = new Random();
             for (int i = 0; i < this.maxEvents; i++)
             {
                 int r = rnd.Next(this.allowedEvents.Length);
                 this.eventArray[i] = this.allowedEvents[r];
             }
-            this.eventArray[this.maxEvents - 1] = new Escape();
-
+            
             // shuffle the array
-            //Random rand = new Random();
-            //this.eventArray = this.eventArray.OrderBy(x => rand.Next()).ToArray();
+            int r1 = rnd.Next(this.eventArray.Length);
+            this.eventArray[r1] = new Escape();
         }
 
         public Event getEvent()
