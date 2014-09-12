@@ -110,6 +110,9 @@ namespace SpaceRaid
 
         #endregion
 
+        /// <summary>
+        /// generatePlayField - create the Raider an set information panel values
+        /// </summary>
         private void generatePlayField()
         {
             // setup the Raider
@@ -123,6 +126,11 @@ namespace SpaceRaid
             tbOutput.Text = Logger.getText() + "\n";
         }
 
+        /// <summary>
+        /// tileGrid_Tapped - Event is triggert when tapped or clicked on a Tile
+        /// </summary>
+        /// <param name="sender">The tapped Grid Object</param>
+        /// <param name="e"></param>
         private void tileGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             // set color of last tile
