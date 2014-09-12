@@ -48,7 +48,6 @@ namespace SpaceRaid
             get { return this.navigationHelper; }
         }
 
-
         public MainPage()
         {
             this.InitializeComponent();
